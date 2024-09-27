@@ -1,0 +1,6 @@
+分析设备 HYJNW19219000220 的 fastbot 执行结果...
+/sdcard/fastbot_logs/: 1 file pulled, 0 skipped. 8.3 MB/s (316118 bytes in 0.037s)
+设备 HYJNW19219000220 的执行结果摘要：
+总事件数：injected:
+崩溃次数：       1
+ANR 次数：       1
