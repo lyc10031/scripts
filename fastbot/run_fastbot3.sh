@@ -7,6 +7,7 @@ APP_PACKAGE="com.weo.projectz"
 LOG_DIR="./logs"  # 本地保存日志的目录
 mkdir -p $LOG_DIR  # 创建日志目录
 
+
 # 检查 fastbot 进程
 check_fastbot_process() {
     local device=$1
@@ -51,7 +52,12 @@ start_fastbot() {
 
     echo "$device 已启动"
 }
-
+# 检查设备是否已经链接
+is_device_connected() {
+    local device=$1
+    adb devices | grep -w "$device" | grep -w "device" > /dev/null
+    return $?
+}
 
 # 主函数
 main() {
@@ -64,7 +70,13 @@ main() {
     local running_minutes=$2
 
     for DEVICE in "${DEVICES[@]}"; do
-        start_fastbot $DEVICE $running_minutes
+        echo "adb 检查设备 $DEVICE 是否连接..."
+        if is_device_connected $DEVICE; then
+            echo "设备 $DEVICE 已连接，准备启动 Fastbot..."
+            start_fastbot $DEVICE $running_minutes
+        else
+            echo "设备 $DEVICE 未连接，跳过此设备。" 
+        fi
     done
 }
 
