@@ -7,6 +7,7 @@ on:
   schedule:
     # 设置在北京时间每天23:59:55运行
     - cron: '55 15 * * *'
+  workflow_dispatch:  # 添加这一行，允许手动运行
 
 permissions:
   contents: read
