@@ -37,21 +37,14 @@ def call():
 
 
 if __name__ == '__main__':
-    while True:
-        if time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()) == '2024-10-01 23:59:59':
-            for i in range(10):
-                print(f"第{i+1}次调用 时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
-                resp = call()
-                if '{"code":78127,"message":"78127"}' != resp:
-                    print("抢到了，停止抢")
-                    break
-                else:
-                    print("没抢到继续抢～")
-                # 随机等待50到500毫秒
-                wait_time = random.randint(50, 500) / 1000
-                time.sleep(wait_time)
+    for i in range(10):
+        print(f"第{i+1}次调用 时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
+        resp = call()
+        if '{"code":78127,"message":"78127"}' != resp:
+            print("抢到了，停止抢")
+            break
         else:
-            time.sleep(1)
-            # 输出当前时间
-            print(f"执行时间未到，当前时间：{time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())}")
-
+            print("没抢到继续抢～")
+        # 随机等待50到500毫秒
+        wait_time = random.randint(50, 500) / 1000
+        time.sleep(wait_time)
