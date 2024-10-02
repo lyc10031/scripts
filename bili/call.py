@@ -48,3 +48,5 @@ if __name__ == '__main__':
         # 随机等待50到500毫秒
         wait_time = random.randint(50, 500) / 1000
         time.sleep(wait_time)
+    else:
+        print("抢到10次都没抢到，程序结束")
